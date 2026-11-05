@@ -6,8 +6,15 @@ app = Flask(__name__)
 
 def get_db():
     return mysql.connector.connect(
+<<<<<<< HEAD
         host=os.environ.get("DB_HOST"), user=os.environ.get("DB_USER"),
         password=os.environ.get("DB_PASSWORD"), database=os.environ.get("DB_NAME")
+=======
+        host=os.environ.get("DB_HOST", "db"),
+        user=os.environ.get("DB_USER", "root"),
+        password=os.environ.get("DB_PASSWORD", "redhat@123"),
+        database=os.environ.get("DB_NAME", "app_db")
+>>>>>>> bacb81f (bugs fixed)
     )
 
 @app.route('/api/products', methods=['GET'])
@@ -41,4 +48,8 @@ def deduct_stock(product_id):
     return jsonify({"message": "Stock deducted", "price": product['price'], "name": product['name']}), 200
 
 if __name__ == '__main__':
+<<<<<<< HEAD
     app.run(host='0.0.0.0', port=5000)
+=======
+    app.run(host='0.0.0.0', port=5001)
+>>>>>>> bacb81f (bugs fixed)

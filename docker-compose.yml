@@ -9,7 +9,11 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
+<<<<<<< HEAD
       MYSQL_DATABASE: ecommerce
+=======
+      MYSQL_DATABASE: app_db
+>>>>>>> bacb81f (bugs fixed)
       MYSQL_USER: appuser
       MYSQL_PASSWORD: apppassword
     volumes:
@@ -26,11 +30,19 @@ services:
     networks:
       - ecomm_app
     container_name: user_service
+<<<<<<< HEAD
     environment: &db_env
       DB_HOST: db
       DB_USER: appuser
       DB_PASSWORD: apppassword
       DB_NAME: ecommerce
+=======
+    environment:
+      DB_HOST: db
+      DB_USER: appuser
+      DB_PASSWORD: apppassword
+      DB_NAME: app_db
+>>>>>>> bacb81f (bugs fixed)
     depends_on:
       db:
         condition: service_healthy
@@ -40,7 +52,15 @@ services:
     networks:
       - ecomm_app    
     container_name: product_service
+<<<<<<< HEAD
     environment: *db_env
+=======
+    environment:
+      DB_HOST: db
+      DB_USER: appuser
+      DB_PASSWORD: apppassword
+      DB_NAME: app_db
+>>>>>>> bacb81f (bugs fixed)
     depends_on:
       db:
         condition: service_healthy
@@ -50,7 +70,15 @@ services:
     networks:
       - ecomm_app
     container_name: order_service
+<<<<<<< HEAD
     environment: *db_env
+=======
+    environment:
+      DB_HOST: db
+      DB_USER: appuser
+      DB_PASSWORD: apppassword
+      DB_NAME: app_db
+>>>>>>> bacb81f (bugs fixed)
     depends_on:
       db:
         condition: service_healthy
@@ -61,7 +89,11 @@ services:
       - ecomm_app    
     container_name: frontend_service
     ports:
+<<<<<<< HEAD
       - "5000:5000"
+=======
+      - "5001:5001"
+>>>>>>> bacb81f (bugs fixed)
     depends_on:
       - user-service
       - product-service
