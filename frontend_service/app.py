@@ -5,15 +5,9 @@ app = Flask(__name__)
 app.secret_key = 'your_super_secret_key'
 
 # Docker handles DNS. We use container names as URLs.
-<<<<<<< HEAD
-USER_API = "http://user-service:5000/api"
-PRODUCT_API = "http://product-service:5000/api"
-ORDER_API = "http://order-service:5000/api"
-=======
 USER_API = "http://user-service:5001/api"
 PRODUCT_API = "http://product-service:5001/api"
 ORDER_API = "http://order-service:5001/api"
->>>>>>> bacb81f (bugs fixed)
 
 @app.route('/')
 def home():
@@ -36,16 +30,11 @@ def login():
             return redirect(url_for('products'))
         else:
             flash("Invalid email or password", "danger")
-<<<<<<< HEAD
-            
-    return render_template('login.html')
-=======
     if request.method == 'GET':
         if session.get('user_id'):
             return redirect(url_for('products')) 
         else: 
             return render_template('login.html')
->>>>>>> bacb81f (bugs fixed)
 
 @app.route('/logout')
 def logout():
@@ -96,8 +85,4 @@ def my_orders():
     return render_template('orders.html', orders=orders_list)
 
 if __name__ == '__main__':
-<<<<<<< HEAD
-    app.run(host='0.0.0.0', port=5000)
-=======
     app.run(host='0.0.0.0', port=5001)
->>>>>>> bacb81f (bugs fixed)
